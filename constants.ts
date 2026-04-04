@@ -1,5 +1,5 @@
 export const config = {
-  title: "3D Web Developer",
+  title: "Creative Developer",
   sections: ["home", "skills", "projects", "contact"],
   home: {
     title: "SAMEER KHAN",
