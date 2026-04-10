@@ -367,3 +367,7 @@ a {
 ::-webkit-scrollbar{
   display: none;
 }
+
+body{
+  cursor: none;
+}

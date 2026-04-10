@@ -42,27 +42,45 @@ export const config = {
   projects: [
     {
       name: "Addidas 3D Experience",
-      description: "Create a dissolve effect with React Three Fiber",
+      description: "Addidas webiste reimagine in 3D",
       image:"https://res.cloudinary.com/dbgzq41x2/image/upload/v1761912505/Screenshot_from_2025-10-31_17-32-50_rpihsp.png",
       link: "https://awwwards-adidas.vercel.app/",
     },
     {
-      name: "Transition effect",
-      description: "Shader based transition effect",
-      image: "projects/project2.jpg",
-      link: "https://www.youtube.com/watch?v=SOF7GBmC6gE",
+      name: "Lazy VFX",
+      description: "The VFX Engine for Game Devs",
+      image: "projects/project5.png",
+      link: "https://lazy-vfx.vercel.app/",
     },
     {
-      name: "Portals",
-      description: "Create portals with React Three Fiber",
-      image: "projects/project3.jpg",
-      link: "https://www.youtube.com/watch?v=2W_VR92Pqgs",
+      name: "GulfStream",
+      description: "GulfStream sites reimagined in 3D",
+      image: "projects/project7.png",
+      link: "https://gulf-stream.vercel.app/",
     },
     {
-      name: "3D Portfolio",
-      description: "Learn how to build a 3D portfolio",
-      image: "projects/project4.jpg",
-      link: "https://www.youtube.com/watch?v=pGMKIyALcK0",
+      name: "Fireworks VFX",
+      description: "Fireworks VFX made using Lazy VFX Enigne",
+      image: "projects/project6.png",
+      link: "https://fireworks-five-sigma.vercel.app/",
+    },
+    {
+      name: "Wizard Game",
+      description: "Wizard Game made using Lazy VFX Enigne",
+      image: "projects/project8.png",
+      link: "https://wizard-game-sable.vercel.app/"
+    },
+    {
+      name: "Senova AI",
+      description: "3D Sites for Senova AI",
+      image: "projects/project9.png",
+      link: "https://senova.in/"
+    },
+    {
+      name: "Spike Labs",
+      description: "Model Generator Using AI",
+      image: "projects/project10.png",
+      link: "https://spikelabs.vercel.app/",
     },
   ],
   contact: {
