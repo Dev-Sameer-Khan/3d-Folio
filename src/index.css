@@ -363,3 +363,7 @@ a {
     font-size: 2rem;
   }
 }
+
+::-webkit-scrollbar{
+  display: none;
+}

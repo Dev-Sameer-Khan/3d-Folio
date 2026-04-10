@@ -25,13 +25,13 @@ const Scene = () => {
 
   return (
     <>
-      <ContactShadows opacity={0.5} scale={[30, 30]} color="#9c8e66" />
+      <ContactShadows opacity={0.5} position-y={-5} color="#9c8e66" />
       <Avatar scale={2} position-y={-2} />
       <mesh
         castShadow
         receiveShadow
         position-y={-2}
-        rotation-x={Math.PI / 2 + 0.1}
+        rotation-x={Math.PI / 2 }
       >
         <planeGeometry args={[viewport.width * 4, viewport.height * 4]} />
         <meshStandardNodeMaterial side={2} colorNode={color("white")} />

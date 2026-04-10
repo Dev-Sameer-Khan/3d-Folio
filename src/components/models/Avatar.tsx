@@ -73,9 +73,9 @@ export function Avatar(props: JSX.IntrinsicElements['group']) {
 
   useEffect(() => {
     if (actions && actions[animation]) {
-      actions[animation]!.reset().fadeIn(0.5).play()
+      actions[animation]!.reset().fadeIn(0.3).play()
       return () => {
-        actions[animation]?.fadeOut(0.5)
+        actions[animation]?.fadeOut(0.3)
       }
     }
   }, [animation, actions])
