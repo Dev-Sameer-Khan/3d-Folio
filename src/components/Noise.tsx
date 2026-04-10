@@ -1,14 +1,22 @@
 
 import { useRef, useEffect } from "react";
 
+type NoiseProps = {
+  patternSize?: number;
+  patternScaleX?: number;
+  patternScaleY?: number;
+  patternRefreshInterval?: number;
+  patternAlpha?: number;
+};
+
 const Noise = ({
   patternSize = 250,
   patternScaleX = 1,
   patternScaleY = 1,
   patternRefreshInterval = 2,
   patternAlpha = 15,
-}) => {
-  const grainRef = useRef(null);
+}: NoiseProps) => {
+  const grainRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = grainRef.current;
@@ -18,7 +26,7 @@ const Noise = ({
     if (!ctx) return;
 
     let frame = 0;
-    let animationId;
+    let animationId: number;
     const canvasSize = 1024;
 
     const resize = () => {
