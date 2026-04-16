@@ -42,34 +42,42 @@ export function MacBookPro(props: ThreeElements["group"]): JSX.Element {
       <mesh
         geometry={nodes.mesh485226736.geometry}
         material={materials.mat16}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh485226736_1.geometry}
         material={materials.mat23}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh485226736_2.geometry}
         material={materials.mat17}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh485226736_3.geometry}
         material={materials.mat15}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh256948792.geometry}
         material={materials.mat16}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh256948792_1.geometry}
         material={materials.mat23}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh256948792_2.geometry}
         material={materials.mat17}
+        castShadow receiveShadow
       />
       <mesh
         geometry={nodes.mesh256948792_3.geometry}
         material={materials.mat25}
+        castShadow receiveShadow
       />
     </group>
   );

@@ -7,6 +7,14 @@ export const config = {
     msubtitle: "CREATIVE",
     msubtitle1: "DEVELOPER",
   },
+  about: {
+    kicker: "ABOUT",
+    lines: [
+      "Creative developer crafting",
+      "3D web, motion, and interfaces",
+      "that feel tactile and alive.",
+    ],
+  },
   skills: [
     {
       name: "React",

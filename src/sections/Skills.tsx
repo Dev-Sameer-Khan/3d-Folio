@@ -1,46 +1,115 @@
-import {Text3D } from "@react-three/drei";
-import { color } from "three/tsl";
-import { BookCase } from "../components/models/BookCase";
-import { CouchSmall } from "../components/models/CouchSmall";
-import { Lamp } from "../components/models/Lamp";
-import { useMobile } from "../components/hooks/useMobile";
+import { Float, Text, Text3D } from "@react-three/drei"
+import { config } from "../../constants"
+import { XLogo } from "../components/models/XLogo"
+import { Linkedin } from "../components/models/Linkedin"
+import { GitHub } from "../components/models/Guithub"
+import { HTML } from "../components/models/HTML"
+import { CSS } from "../components/models/CSS"
+import { Tailwind } from "../components/models/Tailwind"
+import { JS } from "../components/models/JS"
+import { THREEJS } from "../components/models/THREE"
+import { Figma } from "../components/models/Figma"
+import { REACT } from "../components/models/React"
+import type { mx_bilerp_0 } from "three/src/nodes/materialx/lib/mx_noise.js"
 
 const Skills = () => {
-
-const {isMobile} = useMobile()
+  const skills = config.skills.slice(0, 6)
 
   return (
-    <group position-z={10}>
-      <group position-x={-2}>
-        <Text3D
-          font={"/fonts/Inter_Bold.json"}
-          position-z={1}
-          rotation-y={isMobile ? -Math.PI / 6 : Math.PI / 6}
-          position-x={isMobile ? 1.5:1}
-          size={isMobile ? 0.5 :1}
-        >
-          SKILLS
-          <meshStandardNodeMaterial colorNode={color("#D4CFD0")} />
-        </Text3D>
-        <BookCase position-z={-2} position-x={isMobile ? 1.2 : 1 } />
-        <CouchSmall
-          scale={0.4}
-          position-z={0}
-          position-x={isMobile ? 1.2 :0.2}
-          rotation-y={Math.PI / 3}
-        />
-        <Lamp
-          position-z={0.6}
-          position-x={isMobile ? 1.2 :-0.4}
-          position-y={-0.8}
-          rotation-y={-Math.PI}
-        />
-      </group>
-      <mesh position-y={2} position-z={-4} position-x={2}>
-        <sphereGeometry args={[1, 64, 64]} />
-      </mesh>
-    </group>
-  );
-};
+    <group position-x={40}>
+            <Float floatIntensity={0.6}>
+        {/* <Center disableY disableZ> */}
+          <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={2}
+            position-z={4}
+            position-x={5}
+            rotation-y={-Math.PI / 2 - 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow
+            receiveShadow
+          >
+            SKILLS
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+ 
+        {/* </Center> */}
+        
+      </Float>
 
-export default Skills;
+
+      <Float floatIntensity={0.6}>
+        <HTML scale={0.003} position={[1,0,2]} rotation={[0,-2,0]}/>
+        <CSS scale={0.003} position={[1,0,4]} rotation={[0,-2,0]}/>
+        <Tailwind scale={5} position={[1,2,5]} rotation={[-Math.PI/2,Math.PI,-Math.PI/4]}/>
+        <JS scale={5} position={[1,1,3]} rotation={[0,-2,0]}/>
+        <REACT scale={0.2} position={[1,1,5]} rotation={[0,1,0]}/>
+        <THREEJS scale={0.008} position={[1,0,3]} rotation={[-Math.PI/2,Math.PI,-Math.PI/4]}/>
+        <Figma scale={0.2} position={[1,2,4]} rotation={[-Math.PI/2,Math.PI,-Math.PI/4]}/>
+      </Float>
+
+
+      <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={2}
+            position-z={-7}
+            // position-x={-1}
+            rotation-y={-Math.PI / 2 + 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow receiveShadow
+          >
+            THREE JS
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+          <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={1}
+            position-z={-7}
+            // position-x={-1}
+            rotation-y={-Math.PI / 2 + 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow receiveShadow
+          >
+            FRONTEND
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+          <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={0}
+            position-z={-7}
+            // position-x={-1}
+            rotation-y={-Math.PI / 2 + 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow receiveShadow
+          >
+            DEVELOPMENT
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+          <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={-1}
+            position-z={-7}
+            // position-x={-1}
+            rotation-y={-Math.PI / 2 + 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow receiveShadow
+          >
+            UI & UX
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+    
+    </group>
+  )
+}
+
+export default Skills

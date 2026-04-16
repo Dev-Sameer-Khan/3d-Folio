@@ -4,45 +4,52 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const Cursor = () => {
-  const outerRef = useRef(null);
-  const innerRef = useRef(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
+
+    const moveOuterX = gsap.quickTo(outerRef.current, "x", {
+      duration: 0.2,
+      ease: "power2.out",
+    });
+    const moveOuterY = gsap.quickTo(outerRef.current, "y", {
+      duration: 0.2,
+      ease: "power2.out",
+    });
+
+    const moveInnerX = gsap.quickSetter(innerRef.current, "x", "px");
+    const moveInnerY = gsap.quickSetter(innerRef.current, "y", "px");
+
     const moveCursor = (e: MouseEvent) => {
       const { clientX, clientY } = e;
 
-      // Inner circle: instant
-      gsap.set(innerRef.current, {
-        x: clientX - 6,
-        y: clientY - 6,
-      });
-
-      // Outer circle: smooth
-      gsap.to(outerRef.current, {
-        duration: 0.2,
-        x: clientX - 16,
-        y: clientY - 16,
-        ease: "power2.out",
-      });
+      moveInnerX(clientX - 6);
+      moveInnerY(clientY - 6);
+      moveOuterX(clientX - 16);
+      moveOuterY(clientY - 16);
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
   }, []);
 
   return (
-    <div className="max-[1025px]:hidden">
-      {/* Outer Circle */}
+    <div className="cursor-shell" aria-hidden="true">
       <div
         ref={outerRef}
-        className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full z-[1000] pointer-events-none mix-blend-difference"
-      ></div>
+        className="cursor-outer"
+      />
 
-      {/* Inner Circle */}
       <div
         ref={innerRef}
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full z-[1000] pointer-events-none mix-blend-difference"
-      ></div>
+        className="cursor-inner"
+      />
     </div>
   );
 };

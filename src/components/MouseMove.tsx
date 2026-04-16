@@ -1,33 +1,59 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type MutableRefObject } from "react";
 import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
-const CameraController = () => {
-  const mousePosition = useRef({ x: 0, y: 0 });
+type CameraBase = { x: number; y: number; z: number };
+
+const PARALLAX_XY = 0.3;
+const LERP = 0.08;
+
+const CameraParallax = ({
+  base,
+  enabled = true,
+}: {
+  base: MutableRefObject<CameraBase>;
+  enabled?: boolean;
+}) => {
+  const mouse = useRef({ x: 0, y: 0 });
+  const offset = useRef(new THREE.Vector3());
+  const targetOffset = useRef(new THREE.Vector3());
 
   useEffect(() => {
+    if (!enabled) return;
+
     const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse position (-1 to 1)
-      mousePosition.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mousePosition.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    window.addEventListener("pointermove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("pointermove", handleMouseMove);
+  }, [enabled]);
 
   useFrame(({ camera }) => {
-    // Smoothly update camera position
-    const targetX = mousePosition.current.x * 0.2;
-    const targetY = mousePosition.current.y * 0.2;
+    const b = base.current;
+    if (!enabled) {
+      camera.position.set(b.x, b.y, b.z);
+      camera.lookAt(0, 0, 0);
+      return;
+    }
 
-    camera.position.x += (targetX - camera.position.x) * 0.1;
-    camera.position.y += (targetY - camera.position.y + 1) * 0.1;
+    targetOffset.current.set(
+      mouse.current.x * PARALLAX_XY,
+      mouse.current.y * PARALLAX_XY,
+      0
+    );
+    offset.current.lerp(targetOffset.current, LERP);
 
-    // Point camera toward the center
+    camera.position.set(
+      b.x + offset.current.x,
+      b.y + offset.current.y,
+      b.z + offset.current.z
+    );
     camera.lookAt(0, 0, 0);
   });
 
   return null;
 };
 
-export default CameraController;
+export default CameraParallax;

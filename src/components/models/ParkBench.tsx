@@ -26,10 +26,12 @@ export function ParkBench(props: ThreeElements["group"]): JSX.Element {
   return (
     <group {...props} dispose={null}>
       <mesh
+      castShadow receiveShadow
         geometry={nodes["Park_Bench_Cube-Mesh"].geometry}
         material={materials.Metal}
       />
       <mesh
+      castShadow receiveShadow
         geometry={nodes["Park_Bench_Cube-Mesh_1"].geometry}
         material={materials.Wood}
       />

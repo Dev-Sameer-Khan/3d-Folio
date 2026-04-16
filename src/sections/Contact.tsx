@@ -1,69 +1,73 @@
 import { Float, Text3D } from "@react-three/drei"
-import { color } from "three/tsl"
-import { ParkBench } from "../components/models/ParkBench"
-import { Balloon } from "../components/models/Balloon"
+import { XLogo } from "../components/models/XLogo"
+import { Linkedin } from "../components/models/Linkedin"
+import { GitHub } from "../components/models/Guithub"
+import { Email } from "../components/models/Email"
 import { Mailbox } from "../components/models/Mailbox"
-import { Pigeon } from "../components/models/Pigeon"
-import { useMobile } from "../components/hooks/useMobile"
-
+import { ParkBench } from "../components/models/ParkBench"
 
 const Contact = () => {
 
-const {isMobile} = useMobile()
-
   return (
-<group
-          position-z={30}
-        >
-          <Text3D
-            position-x={isMobile ? -1.5 :-2}
-            font={"/fonts/Inter_Bold.json"}
-            size={isMobile ? 0.4 : 1}
-            position-z={-1}
-          >
-            CONTACT
-            <meshStandardNodeMaterial colorNode={color("#D4CFD0")} />
-          </Text3D>
-          <group position-x={isMobile? -1 :-2}>
-            <ParkBench
-              scale={0.5}
-              position-x={-0.5}
-              position-z={-2.5}
-              rotation-y={-Math.PI / 4}
-            />
-            <group position-y={2.2} position-z={-0.5}>
-              <Float floatIntensity={2} rotationIntensity={1.5}>
-                <Balloon scale={1.5} position-x={-0.5} color="#71a2d9" />
-              </Float>
-              <Float
-                floatIntensity={1.5}
-                rotationIntensity={2}
-                position-z={0.5}
-              >
-                <Balloon scale={1.3} color="#d97183" />
-              </Float>
-              <Float speed={2} rotationIntensity={2}>
-                <Balloon scale={1.6} position-x={0.4} color="yellow" />
-              </Float>
-            </group>
-          </group>
+    <group position-x={80}>
+      <Float floatIntensity={0.6}>
+        <XLogo position={[-1,0,-3]} scale={0.3} />
+        <Linkedin position={[-1,1,-4]} scale={0.3} />
+        <GitHub position={[-1,2,-4]} scale={0.3} />
+      <Email position={[2-1,0,2]} scale={10} />
+      </Float>
 
-          <Mailbox
-            scale={0.25}
-            rotation-y={1.25 * Math.PI}
-            position-x={1}
-            position-y={0.25}
-            position-z={0.5}
-          />
-          <Float floatIntensity={1.5} speed={3}>
-            <Pigeon
-              position-x={isMobile ? 1 :2}
-              position-y={1.5}
-              position-z={-0.5}
-              scale={0.3}
-            />
-          </Float>
-        </group>
+      <Float floatIntensity={0.6}>
+        {/* <Center disableY disableZ> */}
+          <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={3}
+            position-z={1}
+            position-x={3}
+            rotation-y={-Math.PI / 2 - 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow
+             receiveShadow
+          >
+            CONTACT 
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+ 
+        {/* </Center> */}
+      </Float>
+      <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={0}
+            position-z={-6}
+            position-x={-1}
+            rotation-y={-Math.PI / 2 + 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow receiveShadow
+          >
+            SAMEER KHAN
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+          <Text3D
+            font={"/fonts/Inter_Bold.json"}
+            size={0.5}
+            position-y={-1}
+            position-z={-5}
+            position-x={-1}
+            rotation-y={-Math.PI / 2 + 0.4  }
+            bevelEnabled
+            bevelThickness={0.3}
+            castShadow receiveShadow
+          >
+            U.P INDIA
+            <meshStandardMaterial color={"#E6E6FA"} />
+          </Text3D>
+          <Mailbox position={[0,-0.3,3]} scale={0.6} rotation-y={-Math.PI - 0.5}/>
+          <ParkBench position={[0,-1,5]} scale={0.9} rotation-y={-Math.PI - 0.5}/>
+    </group>
   )
 }
 
